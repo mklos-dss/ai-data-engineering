@@ -1,28 +1,28 @@
-# JSON Insight Assistant
+# JSON Data Analyst CLI
 
-A lightweight Python CLI application that reads a local JSON file, connects to the OpenAI API, and generates intelligent insights. It offers automatic summarization and an interactive mode to ask follow-up questions about the dataset.
+A command-line Python tool for analyzing structured JSON data using the OpenAI API. The app summarizes input data and enables follow-up questions interactively in the terminal.
 
-## Features
+## Key Features
 
-- Reads a `.json` file provided by the user
-- Generates a smart summary using GPT-3.5-Turbo
-- Interactive terminal question mode
-- Secure OpenAI API key via `.env`
-- Lightweight, easy to use and extend
+- Accepts any JSON file as input
+- Generates AI-driven summaries
+- Asks contextual questions through interactive mode
+- Keeps your API key secure via a `.env` file
+- Minimal setup, quick insights
 
-## Technologies
+## Technology Stack
 
 - Python 3.x
-- OpenAI API
-- `python-dotenv`, `openai`
+- OpenAI API (GPT-3.5 Turbo)
+- Libraries: `openai`, `python-dotenv`
 
-## Installation
+## Setup Instructions
 
-1. **Clone this repository:**
+1. **Clone the repo:**
 
 ```bash
-git clone https://github.com/Evgeniy-Yakubovskiy/ds-stream.git
-cd json-insight-assistant
+git clone https://github.com/your-username/json-data-analyst-cli.git
+cd json-data-analyst-cli
 ```
 
 2. **Install required packages:**
@@ -31,66 +31,52 @@ cd json-insight-assistant
 pip install -r requirements.txt
 ```
 
-3. **Configure your OpenAI API key:**
-
-- Copy the `.env_example` file to `.env`
-- Inside `.env`, add your API key:
+3. **Create and configure your `.env` file:**
 
 ```env
 OPENAI_API_KEY=sk-...
 ```
 
-4. **Run the tool with your JSON file:**
+4. **Run with your JSON file:**
 
 ```bash
-python app.py data/example.json
+python app.py data/sample.json
 ```
 
-## Example Usage
+## Sample Session
 
 ```
 --- Summary by AI ---
-The dataset includes 5 feedback entries from users across iOS, Android, and Web. Common issues include slow loading and crashes, while dark mode received praise.
+The data includes 5 user feedback entries. Key themes include praise for UI and dark mode, and issues with performance and login on Android.
 
 Do you want to ask a question about this data? (y/n): y
-Type your question: What is the most common complaint?
+Type your question: What platforms have the lowest ratings?
 
 --- AI Response ---
-The most frequent complaint concerns slow app loading and crashes, especially on Android.
+Android users reported the lowest ratings, often citing performance problems.
 ```
 
-## File Overview
+## Files Overview
 
-| File              | Description                                    |
-|-------------------|------------------------------------------------|
-| `app.py`          | Main Python CLI script                         |
-| `.env`            | Environment file for API key (excluded from Git) |
-| `example.json`    | Sample dataset to test                         |
-| `requirements.txt`| List of Python dependencies                   |
+| File             | Purpose                                           |
+|------------------|---------------------------------------------------|
+| `app.py`         | Main CLI tool that integrates OpenAI API         |
+| `.env`           | Your private API key (not uploaded to GitHub)    |
+| `example.json`   | Example dataset for testing                      |
+| `requirements.txt`| Dependency list                                  |
 
 ---
 
 ## Tags
 
-**Technologies:** python, cli, openai, dotenv, data-processing, language-models  
-**Industries:** public-sector, analytics, fintech, automation  
-**Frameworks:** openai, cli-app, json
+**Technologies:** python, cli, openai, dotenv, json, ai  
+**Use Cases:** data-summary, insights, analytics, automation  
+**Frameworks:** openai, cli-app
 
 ---
 
-Crafted as a simple starting point for intelligent data analysis workflows using AI.
+Built for fast insight generation from your structured data files.
 
-## About the Project
-
-This project can be used as a base for more advanced applications that combine structured data with large language models:
-
-- Automatic document or report generation
-- Interactive chatbots with data context
-- Smart assistants for form processing
-- AI-powered text analysis or classification
-- Intelligent decision support tools
-
----
 
 ## Enhanced with Data Science Solutions by DS Stream
 
@@ -134,6 +120,8 @@ Ready to turn your data into business value? Reach out to DS Stream experts:
 - LinkedIn: [DS Stream Company Page](https://www.linkedin.com/company/dsstream/)
 - [Explore Our Services](https://www.dsstream.com/services)
 - [View Our Projects](https://www.dsstream.com/projects)
+- [Data Engineering](https://www.dsstream.com/services/data-engineering)
+
 
 **Headquarters:**  
 Warsaw, Poland | Wilmington, Delaware, USA
