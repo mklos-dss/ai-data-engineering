@@ -1,0 +1,39 @@
+{
+  "feedback": [
+    {
+      "user_id": 101,
+      "rating": 4,
+      "comment": "Great app, very intuitive!",
+      "platform": "iOS",
+      "timestamp": "2024-11-03T10:15:00Z"
+    },
+    {
+      "user_id": 102,
+      "rating": 2,
+      "comment": "Slow to load and crashes often.",
+      "platform": "Android",
+      "timestamp": "2024-11-04T08:22:10Z"
+    },
+    {
+      "user_id": 103,
+      "rating": 5,
+      "comment": "Love the new dark mode feature!",
+      "platform": "Web",
+      "timestamp": "2024-11-05T13:40:32Z"
+    },
+    {
+      "user_id": 104,
+      "rating": 3,
+      "comment": "Average experience, could be improved.",
+      "platform": "iOS",
+      "timestamp": "2024-11-06T09:50:47Z"
+    },
+    {
+      "user_id": 105,
+      "rating": 1,
+      "comment": "App doesn't open after latest update.",
+      "platform": "Android",
+      "timestamp": "2024-11-07T11:05:18Z"
+    }
+  ]
+}
