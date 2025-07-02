@@ -6,56 +6,56 @@ from dotenv import load_dotenv
 
 # Load API key from .env
 load_dotenv()
-client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+ai_client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 
-def read_json_file(file_path):
+def load_json(filepath):
     try:
-        with open(file_path, 'r', encoding='utf-8') as f:
-            return json.load(f)
-    except Exception as e:
-        print(f"Error reading JSON file: {e}")
+        with open(filepath, 'r', encoding='utf-8') as file:
+            return json.load(file)
+    except Exception as error:
+        print(f"Failed to load JSON: {error}")
         sys.exit(1)
 
 
-def ask_openai(prompt):
+def query_openai(message):
     try:
-        response = client.chat.completions.create(
+        response = ai_client.chat.completions.create(
             model="gpt-3.5-turbo",
             messages=[
-                {"role": "system", "content": "You are a helpful assistant that analyzes JSON data."},
-                {"role": "user", "content": prompt}
+                {"role": "system", "content": "You are a data-savvy assistant who interprets JSON files."},
+                {"role": "user", "content": message}
             ]
         )
         return response.choices[0].message.content
-    except Exception as e:
-        print(f"OpenAI API error: {e}")
+    except Exception as error:
+        print(f"OpenAI API error: {error}")
         sys.exit(1)
 
 
-def main():
+def run():
     if len(sys.argv) < 2:
-        print("Usage: python app.py <json_file_path>")
+        print("Usage: python app.py <path_to_json_file>")
         sys.exit(1)
 
-    json_path = sys.argv[1]
-    data = read_json_file(json_path)
+    file_path = sys.argv[1]
+    content = load_json(file_path)
 
-    data_preview = json.dumps(data, indent=2)[:3000]  # Truncate to avoid huge prompts
-    base_prompt = f"Here is a JSON dataset:\n{data_preview}\n\nPlease provide a summary of the data."
+    preview = json.dumps(content, indent=2)[:3000]  # Avoid long prompts
+    prompt_intro = f"Below is a JSON dataset:\n{preview}\n\nSummarize the content."
 
-    print("\n--- AI Summary ---")
-    summary = ask_openai(base_prompt)
+    print("\n--- Summary by AI ---")
+    summary = query_openai(prompt_intro)
     print(summary)
 
-    follow_up = input("\nWould you like to ask a question about the data? (y/n): ").strip().lower()
-    if follow_up == 'y':
-        question = input("Enter your question: ").strip()
-        full_prompt = f"Here is a JSON dataset:\n{data_preview}\n\nUser question: {question}"
-        print("\n--- AI Answer ---")
-        answer = ask_openai(full_prompt)
-        print(answer)
+    ask = input("\nDo you want to ask a question about this data? (y/n): ").strip().lower()
+    if ask == 'y':
+        user_question = input("Type your question: ").strip()
+        extended_prompt = f"Here is a JSON file:\n{preview}\n\nQuestion: {user_question}"
+        print("\n--- AI Response ---")
+        response = query_openai(extended_prompt)
+        print(response)
 
 
 if __name__ == "__main__":
-    main()
+    run()

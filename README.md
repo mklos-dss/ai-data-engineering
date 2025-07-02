@@ -1,69 +1,84 @@
-# Data + AI CLI Tool
+# JSON Insight Assistant
 
-A simple and secure Python project that connects to the [OpenAI API](https://platform.openai.com/) and analyzes structured data from a JSON file. The application supports `.env` for secure API key storage and allows for both automatic data summarization and interactive questioning.
+A lightweight Python CLI application that reads a local JSON file, connects to the OpenAI API, and generates intelligent insights. It offers automatic summarization and an interactive mode to ask follow-up questions about the dataset.
 
-## Application Features
+## Features
 
-- Terminal-based interface for communicating with AI (e.g., ChatGPT)
-- Secure storage of API key using `.env` file
-- Integration with OpenAI Chat Completions API
-- Automatic summary of data from a JSON file
-- Interactive question mode about the loaded data
-- Requirements listed in `requirements.txt` for easy setup
-- Lightweight foundation for more advanced data+AI projects
+- Reads a `.json` file provided by the user
+- Generates a smart summary using GPT-3.5-Turbo
+- Interactive terminal question mode
+- Secure OpenAI API key via `.env`
+- Lightweight, easy to use and extend
 
 ## Technologies
 
 - Python 3.x
 - OpenAI API
-- Libraries: `openai`, `python-dotenv`
+- `python-dotenv`, `openai`
 
-## Installation and Configuration
+## Installation
 
-1. Clone the repository:
-   ```
-   git clone https://github.com/your-username/data-ai-cli-tool.git
-   cd data-ai-cli-tool
-   ```
+1. **Clone this repository:**
 
-2. Install dependencies:
-   ```
-   pip install -r requirements.txt
-   ```
+```bash
+git clone https://github.com/Evgeniy-Yakubovskiy/ds-stream.git
+cd json-insight-assistant
+```
 
-3. Register at OpenAI:
-   - Go to: https://platform.openai.com/docs/overview
-   - Create an account
-   - In the Billing section, add credit (e.g., $5)
-   - Disable "Enable auto recharge" if you don't want automatic top-ups
+2. **Install required packages:**
 
-4. Set up your API key:
-   - Go to: https://platform.openai.com/api-keys
-   - Generate and copy your API key
-   - Copy the `.env_example` file and rename it to `.env`
-   - Add your key to the `.env` file:
-     ```
-     OPENAI_API_KEY=sk-...
-     ```
-   - Ensure `.env` is added to `.gitignore` to avoid exposing it in your repo
+```bash
+pip install -r requirements.txt
+```
 
-5. Run the application in the terminal:
-   ```
-   python app.py path/to/yourfile.json
-   ```
+3. **Configure your OpenAI API key:**
 
-6. Ask questions:
-   - The program will automatically summarize the data
-   - Then it will prompt: "Would you like to ask a question about the data? (y/n)"
-   - Type your question and receive a contextual AI response
+- Copy the `.env_example` file to `.env`
+- Inside `.env`, add your API key:
 
-## Project Structure
+```env
+OPENAI_API_KEY=sk-...
+```
 
-| File or Folder      | Description                                                |
-|---------------------|------------------------------------------------------------|
-| `.env`              | File containing your private OpenAI API key               |
-| `app.py`            | Main application logic for data+AI analysis via terminal  |
-| `requirements.txt`  | List of required Python libraries                         |
+4. **Run the tool with your JSON file:**
+
+```bash
+python app.py data/example.json
+```
+
+## Example Usage
+
+```
+--- Summary by AI ---
+The dataset includes 5 feedback entries from users across iOS, Android, and Web. Common issues include slow loading and crashes, while dark mode received praise.
+
+Do you want to ask a question about this data? (y/n): y
+Type your question: What is the most common complaint?
+
+--- AI Response ---
+The most frequent complaint concerns slow app loading and crashes, especially on Android.
+```
+
+## File Overview
+
+| File              | Description                                    |
+|-------------------|------------------------------------------------|
+| `app.py`          | Main Python CLI script                         |
+| `.env`            | Environment file for API key (excluded from Git) |
+| `example.json`    | Sample dataset to test                         |
+| `requirements.txt`| List of Python dependencies                   |
+
+---
+
+## Tags
+
+**Technologies:** python, cli, openai, dotenv, data-processing, language-models  
+**Industries:** public-sector, analytics, fintech, automation  
+**Frameworks:** openai, cli-app, json
+
+---
+
+Crafted as a simple starting point for intelligent data analysis workflows using AI.
 
 ## About the Project
 
