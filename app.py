@@ -6,56 +6,52 @@ from dotenv import load_dotenv
 
 # Load environment variables
 load_dotenv()
-ai_service = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+openai_engine = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
-
-def parse_json(path):
+def load_json_file(filepath):
     try:
-        with open(path, 'r', encoding='utf-8') as json_file:
-            return json.load(json_file)
-    except Exception as exc:
-        print(f"Error loading JSON: {exc}")
+        with open(filepath, 'r', encoding='utf-8') as file:
+            return json.load(file)
+    except Exception as err:
+        print(f"Unable to read file: {err}")
         sys.exit(1)
 
-
-def call_ai(prompt_text):
+def get_ai_summary(user_prompt):
     try:
-        result = ai_service.chat.completions.create(
+        completion = openai_engine.chat.completions.create(
             model="gpt-3.5-turbo",
             messages=[
-                {"role": "system", "content": "You are a JSON analyst assistant."},
-                {"role": "user", "content": prompt_text}
+                {"role": "system", "content": "You analyze JSON datasets and return human-friendly summaries."},
+                {"role": "user", "content": user_prompt}
             ]
         )
-        return result.choices[0].message.content
-    except Exception as exc:
-        print(f"OpenAI API error: {exc}")
+        return completion.choices[0].message.content
+    except Exception as err:
+        print(f"Error from OpenAI: {err}")
         sys.exit(1)
 
-
-def launch():
+def main():
     if len(sys.argv) < 2:
-        print("Usage: python app.py <json_path>")
+        print("Usage: python app.py <json_file_path>")
         sys.exit(1)
 
-    input_path = sys.argv[1]
-    json_data = parse_json(input_path)
+    json_path = sys.argv[1]
+    parsed_data = load_json_file(json_path)
 
-    json_snippet = json.dumps(json_data, indent=2)[:3000]  # Limit input size
-    base_query = f"Here is a JSON document:\n{json_snippet}\n\nPlease summarize the content."
+    snippet = json.dumps(parsed_data, indent=2)[:3000]
+    initial_prompt = f"Analyze this JSON data:\n{snippet}\n\nGive a high-level summary."
 
-    print("\n--- AI Summary ---")
-    summary_result = call_ai(base_query)
-    print(summary_result)
+    print("\n=== Summary ===")
+    summary = get_ai_summary(initial_prompt)
+    print(summary)
 
-    follow = input("\nWould you like to ask a specific question? (y/n): ").strip().lower()
-    if follow == 'y':
-        custom_question = input("Enter your question: ").strip()
-        detailed_query = f"Here is a JSON document:\n{json_snippet}\n\nQuestion: {custom_question}"
-        print("\n--- AI Answer ---")
-        answer = call_ai(detailed_query)
+    next_step = input("\nWould you like to ask something specific about this data? (y/n): ").lower().strip()
+    if next_step == 'y':
+        custom_input = input("Enter your question: ")
+        detailed_prompt = f"Here is a JSON document:\n{snippet}\n\nUser question: {custom_input}"
+        print("\n=== AI Response ===")
+        answer = get_ai_summary(detailed_prompt)
         print(answer)
 
-
 if __name__ == "__main__":
-    launch()
+    main()
