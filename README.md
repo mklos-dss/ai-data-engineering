@@ -1,81 +1,80 @@
 # AI Data Analyst CLI
 
-A streamlined Python CLI utility for analyzing structured JSON files using the OpenAI API. Instantly summarize your data and ask contextual questions through an interactive terminal interface.
+A minimal and effective Python command-line application to analyze and summarize your JSON data using OpenAI's GPT API.
 
-## Features
+## Key Features
 
-- Accepts local `.json` file uploads
-- Automatically summarizes content via GPT-3.5
-- Interactive mode for follow-up questions
-- Secure API key via `.env` file
-- Easy to set up and modify
+- Upload a `.json` file and get a summary instantly
+- Interactive Q&A about the contents of your data
+- OpenAI API integration with GPT-3.5 Turbo
+- Environment-secured API key using `.env`
 
-## Technology Stack
+## Requirements
 
-- Python 3.11+
-- OpenAI GPT API
-- `openai`, `python-dotenv`
+- Python 3.10+
+- OpenAI account and API key
 
-## Getting Started
-
-1. **Clone this repository:**
+## Installation
 
 ```bash
-git clone https://github.com/michalmilosz-ds/ai-data-analyst.git
-cd ai-data-analyst
-```
-
-2. **Install dependencies:**
-
-```bash
+git clone https://github.com/Bakiera/ai-data-anlayst.git
+cd ai-data-anlayst
 pip install -r requirements.txt
 ```
 
-3. **Prepare your OpenAI API key:**
+## Setup
 
-```env
-OPENAI_API_KEY=sk-...
-```
+1. Copy the `.env_example` file:
+   ```bash
+   cp .env_example .env
+   ```
+2. Add your OpenAI API key to the `.env` file:
+   ```env
+   OPENAI_API_KEY=sk-...
+   ```
 
-4. **Run the app:**
+## Usage
+
+Run the app with a JSON file:
 
 ```bash
-python app.py path/to/yourfile.json
+python app.py example.json
 ```
 
-## Example Output
+You'll get a summary and have the option to ask a question about the data interactively.
+
+### Example Output
 
 ```
-=== Summary ===
-This dataset includes user feedback entries from mobile and web platforms. Common issues are related to app crashes and load speed, while dark mode and usability are praised.
+=== AI Summary ===
+This JSON contains 10 user reports including timestamps, platform details, and app feedback. Users commonly mention app slowness on Android.
 
-Would you like to ask something specific about this data? (y/n): y
-Enter your question: Which platform had the most complaints?
+Do you want to ask a question about this data? (y/n): y
+Enter your question: What is the most common problem?
 
-=== AI Response ===
-Android received the most complaints, mostly regarding performance and crashes.
+=== AI Answer ===
+The most frequently reported issue is performance lag, especially during loading.
 ```
 
-## Project Structure
+## File Overview
 
-| File             | Description                                |
-|------------------|--------------------------------------------|
-| `app.py`         | CLI logic for JSON analysis with OpenAI     |
-| `.env`           | API key file (not committed)               |
-| `example.json`   | Sample dataset                             |
-| `requirements.txt`| Project dependencies                      |
+| File              | Purpose                                       |
+|-------------------|-----------------------------------------------|
+| `app.py`          | Main CLI script for JSON analysis              |
+| `.env`            | Local environment config (excluded from Git)  |
+| `requirements.txt`| Dependencies list                              |
 
 ---
 
 ## Tags
 
-**Technologies:** python, openai, cli, dotenv, json, ai  
-**Use Cases:** data-insights, auto-summary, structured-data, terminal-app  
-**Frameworks:** openai, cli
+**Technologies:** python, cli, openai, json, dotenv  
+**Use Cases:** json-summary, data-analysis, terminal-tool  
+**Frameworks:** openai, command-line
 
 ---
 
-Created for rapid insight generation from real-world structured datasets.
+Built for efficient, AI-powered JSON exploration in terminal.
 
 
 **Industry Focus**
