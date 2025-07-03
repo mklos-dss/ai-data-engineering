@@ -1,72 +1,67 @@
-# AI Data Analyst Engineer – CLI Tool
+# AI Data Analyst DSS – Command Line Tool
 
-This CLI-based tool allows you to upload a JSON file and receive structured summaries or answers from OpenAI’s GPT model. It is designed for engineers and analysts who want fast insights from data files without writing custom code.
+This command-line application is built for analysts and data engineers to extract insights from JSON files using OpenAI's GPT models. It streamlines data understanding and question-answering directly from raw structured files.
 
-## Features
+## Key Features
 
-- Accepts any JSON file as input
-- Provides AI-generated summary and insights
-- Allows follow-up questions interactively
-- Lightweight CLI utility with zero UI dependencies
-- Environment-safe OpenAI API key loading
+- Upload JSON files via CLI and get summaries powered by GPT-3.5
+- Ask follow-up questions about the data
+- Lightweight and dependency-minimal
+- Environment-secure with `.env` support for OpenAI API keys
 
-## Setup
+## Installation
 
-1. Clone the repository:
-   ```
-   git clone https://github.com/piotr-lotka-dss/ai-data-analyst-engineer.git
-   cd ai-data-analyst-engineer
-   ```
+```bash
+git clone https://github.com/klepacz/ai-data-analyst-dss.git
+cd ai-data-analyst-dss
+pip install -r requirements.txt
+```
 
-2. Install dependencies:
-   ```
-   pip install -r requirements.txt
-   ```
+## Configuration
 
-3. Add your OpenAI API key in a `.env` file:
-   ```
-   OPENAI_API_KEY=your_openai_key_here
-   ```
+Add your OpenAI API key in a `.env` file:
+
+```bash
+OPENAI_API_KEY=your_api_key_here
+```
 
 ## Usage
 
-Run the tool by passing a `.json` file:
-
-```
-python app.py data/example.json
+```bash
+python app.py path/to/your_file.json
 ```
 
-You’ll first get an automatic summary, followed by an optional question prompt.
+You’ll receive a summary and be asked if you want to continue with a specific question.
 
-## Sample Output
-
-```
---- Summary ---
-This JSON file contains 200 log entries from a web application.
-Most entries show 200 status codes, with occasional 404s on static files.
-
-Ask a question about this data? (y/n): y
-Enter your question: Which endpoints failed the most?
-
---- Answer ---
-The /images/logo.png and /scripts/app.js endpoints returned the most 404 errors.
-```
-
-## File Structure
+## Example Output
 
 ```
-├── app.py              # Python script for AI interaction
-├── .env                # Your private API key
-├── .gitignore          # Ignores .env and cache files
+--- AI Summary ---
+This dataset contains 500 user session logs. Most sessions lasted under 2 minutes.
+40% of users bounced on the homepage.
+
+Ask a follow-up question? (y/n): y
+Your question: What’s the bounce rate by device?
+
+--- AI Answer ---
+Mobile users had a 52% bounce rate, while desktop was at 33%.
+```
+
+## Project Structure
+
+```
+├── app.py              # Main CLI tool
+├── .env                # Local OpenAI key
 ├── requirements.txt    # Python dependencies
-├── example.json        # Sample test file (optional)
+├── .gitignore          # Ignores .env and temp files
 ```
 
 ---
 
 ## Tags
 
-cli, openai, json, data-analysis, engineers, terminal-tool, gpt, automation
+openai, json, analytics, cli, gpt, automation, devtools, data-assistant
+
 
 
 **Industry Focus**
