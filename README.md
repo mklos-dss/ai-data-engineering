@@ -1,80 +1,75 @@
-# AI Data Analyst CLI
+# HK AI Data Analyst CLI
 
-A minimal and effective Python command-line application to analyze and summarize your JSON data using OpenAI's GPT API.
+A lightweight command-line app for summarizing and querying structured JSON data using the OpenAI GPT API.
 
-## Key Features
+## Features
 
-- Upload a `.json` file and get a summary instantly
-- Interactive Q&A about the contents of your data
-- OpenAI API integration with GPT-3.5 Turbo
-- Environment-secured API key using `.env`
+- Accepts a local JSON file and outputs a human-readable summary
+- Asks AI follow-up questions through an interactive interface
+- Requires only Python and an OpenAI API key stored in `.env`
 
-## Requirements
+## Technologies
 
 - Python 3.10+
-- OpenAI account and API key
-
-## Installation
-
-```bash
-git clone https://github.com/Bakiera/ai-data-anlayst.git
-cd ai-data-anlayst
-pip install -r requirements.txt
-```
+- OpenAI GPT-3.5 Turbo
+- Libraries: `openai`, `python-dotenv`
 
 ## Setup
 
-1. Copy the `.env_example` file:
-   ```bash
-   cp .env_example .env
-   ```
-2. Add your OpenAI API key to the `.env` file:
-   ```env
-   OPENAI_API_KEY=sk-...
-   ```
+```bash
+git clone https://github.com/hubert-kujawa/hk-ai-data-analyst.git
+cd hk-ai-data-analyst
+pip install -r requirements.txt
+```
+
+### Configure API Key
+
+Create a `.env` file in the root directory:
+
+```env
+OPENAI_API_KEY=sk-...
+```
 
 ## Usage
-
-Run the app with a JSON file:
 
 ```bash
 python app.py example.json
 ```
 
-You'll get a summary and have the option to ask a question about the data interactively.
+You’ll get a structured summary and an optional Q&A prompt.
 
-### Example Output
+### Sample Output
 
 ```
 === AI Summary ===
-This JSON contains 10 user reports including timestamps, platform details, and app feedback. Users commonly mention app slowness on Android.
+This file includes customer reviews across multiple platforms, highlighting usability issues and common requests for performance improvements.
 
 Do you want to ask a question about this data? (y/n): y
-Enter your question: What is the most common problem?
+Enter your question: Which feedback type is most positive?
 
 === AI Answer ===
-The most frequently reported issue is performance lag, especially during loading.
+Positive comments mainly relate to the interface design and ease of navigation.
 ```
 
-## File Overview
+## File Structure
 
-| File              | Purpose                                       |
-|-------------------|-----------------------------------------------|
-| `app.py`          | Main CLI script for JSON analysis              |
-| `.env`            | Local environment config (excluded from Git)  |
-| `requirements.txt`| Dependencies list                              |
+| File              | Description                              |
+|-------------------|------------------------------------------|
+| `app.py`          | The CLI tool logic                        |
+| `.env`            | API key config (not pushed to GitHub)     |
+| `requirements.txt`| Project dependencies                      |
 
 ---
 
 ## Tags
 
-**Technologies:** python, cli, openai, json, dotenv  
-**Use Cases:** json-summary, data-analysis, terminal-tool  
-**Frameworks:** openai, command-line
+**Technologies:** python, openai, cli, json, dotenv  
+**Use Cases:** interactive-data-analysis, JSON summarization  
+**Frameworks:** openai, terminal
 
 ---
 
-Built for efficient, AI-powered JSON exploration in terminal.
+Developed for HK by leveraging the power of OpenAI for smarter JSON analysis.
 
 
 **Industry Focus**

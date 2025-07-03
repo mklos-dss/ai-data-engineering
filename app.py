@@ -4,58 +4,51 @@ import sys
 from openai import OpenAI
 from dotenv import load_dotenv
 
-# Load environment variables from .env file
+# Load API key from .env
 load_dotenv()
 openai_client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
-
 def read_json(filepath):
     try:
-        with open(filepath, 'r', encoding='utf-8') as file:
-            return json.load(file)
+        with open(filepath, "r", encoding="utf-8") as f:
+            return json.load(f)
     except Exception as e:
-        print(f"Error loading JSON file: {e}")
+        print(f"[!] Failed to read JSON file: {e}")
         sys.exit(1)
 
-
-def summarize_with_openai(prompt):
+def ask_ai(prompt_text):
     try:
-        result = openai_client.chat.completions.create(
+        response = openai_client.chat.completions.create(
             model="gpt-3.5-turbo",
             messages=[
-                {"role": "system", "content": "You are a JSON data analyst that explains and summarizes the content."},
-                {"role": "user", "content": prompt}
+                {"role": "system", "content": "You are a data analyst AI. Provide useful summaries and insights from structured JSON data."},
+                {"role": "user", "content": prompt_text}
             ]
         )
-        return result.choices[0].message.content
+        return response.choices[0].message.content
     except Exception as e:
-        print(f"OpenAI API error: {e}")
+        print(f"[!] OpenAI API Error: {e}")
         sys.exit(1)
 
-
-def run_cli():
+def run():
     if len(sys.argv) < 2:
         print("Usage: python app.py <path_to_json_file>")
         sys.exit(1)
 
     file_path = sys.argv[1]
-    json_content = read_json(file_path)
+    data = read_json(file_path)
+    snippet = json.dumps(data, indent=2)[:3500]
 
-    preview_data = json.dumps(json_content, indent=2)[:3000]  # Limit size
-    summary_prompt = f"Analyze the following JSON and provide a summary:\n{preview_data}"
+    base_prompt = f"Here is a JSON dataset:\n\n{snippet}\n\nPlease summarize the key insights."
+    print("\n[AI Summary]")
+    print(ask_ai(base_prompt))
 
-    print("\n=== AI Summary ===")
-    summary = summarize_with_openai(summary_prompt)
-    print(summary)
-
-    user_input = input("\nDo you want to ask a question about this data? (y/n): ").strip().lower()
-    if user_input == 'y':
-        question = input("Enter your question: ")
-        question_prompt = f"Based on this JSON:\n{preview_data}\n\nAnswer the following question: {question}"
-        print("\n=== AI Answer ===")
-        response = summarize_with_openai(question_prompt)
-        print(response)
-
+    follow_up = input("\nWould you like to ask a custom question about the data? (y/n): ").strip().lower()
+    if follow_up == "y":
+        question = input("Your question: ")
+        custom_prompt = f"Given this JSON data:\n\n{snippet}\n\nAnswer this question: {question}"
+        print("\n[AI Answer]")
+        print(ask_ai(custom_prompt))
 
 if __name__ == "__main__":
-    run_cli()
+    run()
