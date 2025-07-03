@@ -1,21 +1,21 @@
-# AI Data Analyst CLI – RM Edition
+# AI Data Analyst Engineer – CLI Tool
 
-This is a lightweight command-line tool that uses OpenAI's GPT model to analyze JSON files and extract insights, summaries, or answers to your questions.
+This CLI-based tool allows you to upload a JSON file and receive structured summaries or answers from OpenAI’s GPT model. It is designed for engineers and analysts who want fast insights from data files without writing custom code.
 
 ## Features
 
-- Reads any `.json` file with structured or semi-structured data
-- Sends the content to OpenAI API with a clear prompt
-- Receives a summary or analysis back from the model
-- Lets you optionally ask follow-up questions
-- Secure API key loading using `.env`
+- Accepts any JSON file as input
+- Provides AI-generated summary and insights
+- Allows follow-up questions interactively
+- Lightweight CLI utility with zero UI dependencies
+- Environment-safe OpenAI API key loading
 
-## Installation
+## Setup
 
 1. Clone the repository:
    ```
-   git clone https://github.com/michalak-rm/ai-data-analyst-rm.git
-   cd ai-data-analyst-rm
+   git clone https://github.com/piotr-lotka-dss/ai-data-analyst-engineer.git
+   cd ai-data-analyst-engineer
    ```
 
 2. Install dependencies:
@@ -23,56 +23,50 @@ This is a lightweight command-line tool that uses OpenAI's GPT model to analyze 
    pip install -r requirements.txt
    ```
 
-3. Create a `.env` file:
+3. Add your OpenAI API key in a `.env` file:
    ```
-   OPENAI_API_KEY=your-openai-api-key
+   OPENAI_API_KEY=your_openai_key_here
    ```
 
 ## Usage
 
-Run the tool with a path to your `.json` file:
+Run the tool by passing a `.json` file:
 
 ```
-python app.py path/to/your.json
+python app.py data/example.json
 ```
 
-After the initial summary, you’ll be prompted to ask a custom question about the data.
+You’ll first get an automatic summary, followed by an optional question prompt.
 
-## Example
-
-```bash
-python app.py example.json
-```
-
-Output:
+## Sample Output
 
 ```
 --- Summary ---
-The JSON contains 50 survey responses. Most users are satisfied with the mobile experience, but 12 mentioned slow loading times.
+This JSON file contains 200 log entries from a web application.
+Most entries show 200 status codes, with occasional 404s on static files.
 
 Ask a question about this data? (y/n): y
-Enter your question: What could be improved?
+Enter your question: Which endpoints failed the most?
 
 --- Answer ---
-Based on the feedback, app speed and responsiveness should be prioritized.
+The /images/logo.png and /scripts/app.js endpoints returned the most 404 errors.
 ```
 
-## Project Structure
+## File Structure
 
 ```
-├── app.py              # Main application logic
-├── example.json        # Sample JSON file to test with
-├── .env                # Your API key (not committed)
-├── .gitignore          # Ignores .env and cache
+├── app.py              # Python script for AI interaction
+├── .env                # Your private API key
+├── .gitignore          # Ignores .env and cache files
 ├── requirements.txt    # Python dependencies
+├── example.json        # Sample test file (optional)
 ```
 
 ---
 
 ## Tags
 
-python, openai, json, cli, ai-tools, data-analysis, terminal-app, gpt
-
+cli, openai, json, data-analysis, engineers, terminal-tool, gpt, automation
 
 
 **Industry Focus**
