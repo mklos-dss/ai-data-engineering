@@ -1,65 +1,65 @@
-# AI Data Engineer – JSON CLI Assistant
+# AI Data Integration – JSON CLI Assistant
 
-A streamlined command-line tool that enables AI-powered analysis of JSON files. Ideal for data engineers and analysts who want quick answers and summaries from raw data using OpenAI.
+A command-line utility that integrates artificial intelligence into your data analysis workflow. Upload JSON files and get smart summaries and insights using OpenAI’s GPT models. Ideal for data integration and automation use cases.
 
 ## Features
 
-- Accepts JSON files as input
-- Provides structured summaries and insights using GPT-3.5
-- Interactive follow-up questions supported
-- Minimal setup, runs directly in terminal
+- Upload JSON file via CLI
+- Generate descriptive summaries instantly
+- Ask follow-up questions about your data
+- Lightweight and environment-isolated
 
 ## Installation
 
 ```bash
-git clone https://github.com/michal-rudawski/ai-data-engineer.git
-cd ai-data-engineer
+git clone https://github.com/dss-mak-her/ai-data-integration.git
+cd ai-data-integration
 pip install -r requirements.txt
 ```
 
 ## Configuration
 
-Create a `.env` file in the project root:
+Prepare your `.env` file with OpenAI credentials:
 
 ```env
-OPENAI_API_KEY=your_openai_api_key_here
+OPENAI_API_KEY=your_api_key_here
 ```
 
 ## Usage
 
 ```bash
-python app.py path/to/input.json
+python app.py path/to/your_file.json
 ```
 
-Get an immediate summary and optionally ask custom questions about the data.
+You’ll receive an AI summary and can ask additional questions interactively.
 
-## Sample Output
+## Example Output
 
 ```
 --- AI Summary ---
-The JSON includes IoT telemetry data from 5 devices. Common anomalies include voltage spikes and missing temperature values.
+The JSON contains CRM data from multiple systems. Redundant customer IDs were detected.
 
 Ask a follow-up question? (y/n): y
-Your question: Which devices had the most voltage spikes?
+Your question: Which system has the most duplicates?
 
 --- AI Answer ---
-Device ID 103 and 205 had the highest number of voltage anomalies.
+System B has 45 duplicate customer IDs, the highest among all systems.
 ```
 
-## Repository Contents
+## File Structure
 
 ```
-├── app.py              # CLI interface for analysis
-├── .env                # Local environment variable file
-├── requirements.txt    # Python dependencies
-├── .gitignore          # Ignore .env and caches
+├── app.py              # CLI interface
+├── .env                # OpenAI credentials (local only)
+├── requirements.txt    # Python packages
+├── .gitignore          # Ignore .env and cache
 ```
 
 ---
 
 ## Tags
 
-openai, json, data-engineering, gpt, analytics, automation, terminal, cli
+openai, json, data-integration, analytics, gpt, cli, ai-assistant, automation
 
 
 **Industry Focus**

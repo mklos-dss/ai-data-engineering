@@ -4,58 +4,58 @@ import sys
 from openai import OpenAI
 from dotenv import load_dotenv
 
-# Load environment variables
+# Load environment configuration
 load_dotenv()
 api_key = os.getenv("OPENAI_API_KEY")
 
 if not api_key:
-    print("Missing OPENAI_API_KEY in .env file.")
+    print("ERROR: OPENAI_API_KEY not set in .env file.")
     sys.exit(1)
 
 client = OpenAI(api_key=api_key)
 
-def read_json(path):
+def read_json_file(path):
     try:
-        with open(path, "r", encoding="utf-8") as f:
-            return json.load(f)
-    except Exception as e:
-        print(f"Error reading JSON file: {e}")
+        with open(path, "r", encoding="utf-8") as file:
+            return json.load(file)
+    except Exception as err:
+        print(f"Failed to read JSON file: {err}")
         sys.exit(1)
 
-def analyze_data(content, extra_question=None):
-    prompt = f"Please analyze the following JSON:\n\n{content}"
-    if extra_question:
-        prompt += f"\n\nQuestion: {extra_question}"
+def query_ai(json_text, followup=None):
+    prompt = f"Review and summarize this JSON:\n\n{json_text}"
+    if followup:
+        prompt += f"\n\nAdditional question: {followup}"
 
     try:
-        response = client.chat.completions.create(
+        result = client.chat.completions.create(
             model="gpt-3.5-turbo",
             messages=[
-                {"role": "system", "content": "You are an experienced data engineer analyzing JSON data."},
+                {"role": "system", "content": "You are an expert in data integration and AI analytics."},
                 {"role": "user", "content": prompt}
             ]
         )
-        return response.choices[0].message.content
+        return result.choices[0].message.content
     except Exception as e:
-        print(f"API error: {e}")
+        print(f"API Error: {e}")
         sys.exit(1)
 
 def main():
     if len(sys.argv) < 2:
-        print("Usage: python app.py <json_file_path>")
+        print("Usage: python app.py <json_file>")
         sys.exit(1)
 
-    json_path = sys.argv[1]
-    json_data = read_json(json_path)
-    preview = json.dumps(json_data, indent=2)[:3500]
+    filepath = sys.argv[1]
+    json_data = read_json_file(filepath)
+    json_text = json.dumps(json_data, indent=2)[:3500]
 
     print("\n--- AI Summary ---")
-    print(analyze_data(preview))
+    print(query_ai(json_text))
 
-    if input("\nDo you want to ask a question? (y/n): ").strip().lower() == "y":
-        question = input("Enter your question: ")
+    if input("\nWould you like to ask a follow-up question? (y/n): ").strip().lower() == "y":
+        user_question = input("Your question: ")
         print("\n--- AI Answer ---")
-        print(analyze_data(preview, question))
+        print(query_ai(json_text, user_question))
 
 if __name__ == "__main__":
     main()
