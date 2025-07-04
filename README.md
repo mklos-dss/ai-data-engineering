@@ -1,65 +1,108 @@
-# AI Data Science CLI Tool
+# AI Data Analyst CLI
 
-A command-line tool designed for data scientists to upload JSON files and get AI-powered summaries and insights using OpenAI's GPT models.
+A command-line tool for analyzing the contents of JSON files using OpenAI's GPT models. Ideal for data analysts, engineers, and scientists who want quick, intelligent summaries and follow-up Q&A powered by generative AI.
 
-## Features
+---
 
-- Accepts JSON files as input
-- Provides AI-generated summaries and interactive Q&A
-- Lightweight and fast CLI application
-- Secure environment variable handling for API keys
+## 🔍 What It Does
 
-## Installation
+This lightweight Python CLI app allows you to:
+
+- Upload any valid JSON file
+- Automatically get a high-level summary using GPT-3.5
+- Ask a custom follow-up question about the file content
+
+No dashboards, no UIs — just insights.
+
+---
+
+## ⚙️ How It Works
+
+1. The user provides a path to a local `.json` file.
+2. The app sends the JSON content to the OpenAI API.
+3. GPT returns a structured summary of what's in the file.
+4. Optionally, the user can ask follow-up questions in the terminal.
+
+---
+
+## 🚀 Getting Started
+
+### 1. Clone the repository
 
 ```bash
-git clone https://github.com/utrackimateusz/ai-data-science.git
-cd ai-data-science
+git clone https://github.com/lukaszmilaszewski-dss/ai-data-analyst-1.git
+cd ai-data-analyst-1
+```
+
+### 2. Install dependencies
+
+```bash
 pip install -r requirements.txt
 ```
 
-## Configuration
+### 3. Set your API key
 
-Create a `.env` file and add your OpenAI API key:
+Create a file called `.env`:
 
 ```env
-OPENAI_API_KEY=your_openai_api_key
+OPENAI_API_KEY=your_openai_key_here
 ```
 
-## Usage
+Make sure `.env` is excluded in `.gitignore`.
+
+---
+
+## 🧪 Usage
 
 ```bash
-python app.py path/to/your.json
+python app.py path/to/data.json
 ```
 
-Receive a summary and optionally ask follow-up questions about the data.
+You will see an AI-generated summary of the file content. You’ll then be asked whether you want to ask a follow-up question interactively.
 
-## Example Output
+---
+
+## 💡 Example
 
 ```
 --- AI Summary ---
-The JSON contains experimental results with multiple test runs. Most runs show consistent data, except run 5 which deviates.
+The file contains metadata and performance statistics for five marketing campaigns. The third campaign underperformed significantly.
 
-Ask a follow-up question? (y/n): y
-Your question: What caused the deviation in run 5?
+Would you like to ask a follow-up question? (y/n): y
+Your question: Why did campaign 3 fail?
 
 --- AI Answer ---
-The deviation appears related to sensor calibration errors during that run.
-```
-
-## Project Structure
-
-```
-├── app.py
-├── requirements.txt
-├── .gitignore
-├── .env (excluded)
+Campaign 3 suffered from low CTR and was targeted to an audience outside the desired segment.
 ```
 
 ---
 
-## Tags
+## 📁 Project Structure
 
-openai, json, data-science, cli, gpt, ai-assistant, automation, research
+```
+.
+├── app.py
+├── requirements.txt
+├── .env               # Your local OpenAI key (excluded from repo)
+├── .gitignore
+├── README.md
+```
+
+---
+
+## 🧠 Built With
+
+- Python
+- OpenAI API
+- Python-dotenv
+- Terminal / CLI
+
+---
+
+## 🏷️ Tags
+
+openai, data-analysis, json, cli-tool, automation, gpt, insights
+
 
 
 
