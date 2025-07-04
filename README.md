@@ -1,67 +1,65 @@
-# AI Data Analyst 004 – JSON CLI Assistant
+# AI Data Engineer – JSON CLI Assistant
 
-This command-line tool lets you upload a JSON file and instantly receive structured AI-powered insights. Designed for analysts and developers who want to save time by using OpenAI to quickly understand data.
+A streamlined command-line tool that enables AI-powered analysis of JSON files. Ideal for data engineers and analysts who want quick answers and summaries from raw data using OpenAI.
 
 ## Features
 
-- Analyze raw JSON structures via OpenAI’s GPT models
-- Interactive Q&A after initial summary
-- Minimalistic CLI – no web UI required
-- `.env` based API key loading for safety
+- Accepts JSON files as input
+- Provides structured summaries and insights using GPT-3.5
+- Interactive follow-up questions supported
+- Minimal setup, runs directly in terminal
 
 ## Installation
 
 ```bash
-git clone https://github.com/michalmilosz-ds/ai-data-analyst-004.git
-cd ai-data-analyst-004
+git clone https://github.com/michal-rudawski/ai-data-engineer.git
+cd ai-data-engineer
 pip install -r requirements.txt
 ```
 
 ## Configuration
 
-Create a `.env` file with your API key:
+Create a `.env` file in the project root:
 
 ```env
-OPENAI_API_KEY=your_openai_api_key
+OPENAI_API_KEY=your_openai_api_key_here
 ```
 
 ## Usage
 
 ```bash
-python app.py path/to/your_file.json
+python app.py path/to/input.json
 ```
 
-You will get a summary and can optionally ask further questions.
+Get an immediate summary and optionally ask custom questions about the data.
 
 ## Sample Output
 
 ```
 --- AI Summary ---
-The dataset contains customer support tickets. Most relate to login issues.
-Ticket volume peaked in March.
+The JSON includes IoT telemetry data from 5 devices. Common anomalies include voltage spikes and missing temperature values.
 
 Ask a follow-up question? (y/n): y
-Your question: What login errors were most frequent?
+Your question: Which devices had the most voltage spikes?
 
 --- AI Answer ---
-The majority of login issues were due to incorrect passwords and expired sessions.
+Device ID 103 and 205 had the highest number of voltage anomalies.
 ```
 
-## Project Layout
+## Repository Contents
 
 ```
-├── app.py              # CLI script for JSON analysis
-├── .env                # Local environment file (excluded from repo)
+├── app.py              # CLI interface for analysis
+├── .env                # Local environment variable file
 ├── requirements.txt    # Python dependencies
-├── .gitignore          # Files to ignore
+├── .gitignore          # Ignore .env and caches
 ```
 
 ---
 
 ## Tags
 
-json, gpt, openai, analytics, ai-assistant, cli, devtools, automation
-
+openai, json, data-engineering, gpt, analytics, automation, terminal, cli
 
 
 **Industry Focus**
