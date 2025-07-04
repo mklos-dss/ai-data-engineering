@@ -1,28 +1,28 @@
-# AI Data Analyst DSS – Command Line Tool
+# AI Data Analyst 004 – JSON CLI Assistant
 
-This command-line application is built for analysts and data engineers to extract insights from JSON files using OpenAI's GPT models. It streamlines data understanding and question-answering directly from raw structured files.
+This command-line tool lets you upload a JSON file and instantly receive structured AI-powered insights. Designed for analysts and developers who want to save time by using OpenAI to quickly understand data.
 
-## Key Features
+## Features
 
-- Upload JSON files via CLI and get summaries powered by GPT-3.5
-- Ask follow-up questions about the data
-- Lightweight and dependency-minimal
-- Environment-secure with `.env` support for OpenAI API keys
+- Analyze raw JSON structures via OpenAI’s GPT models
+- Interactive Q&A after initial summary
+- Minimalistic CLI – no web UI required
+- `.env` based API key loading for safety
 
 ## Installation
 
 ```bash
-git clone https://github.com/klepacz/ai-data-analyst-dss.git
-cd ai-data-analyst-dss
+git clone https://github.com/michalmilosz-ds/ai-data-analyst-004.git
+cd ai-data-analyst-004
 pip install -r requirements.txt
 ```
 
 ## Configuration
 
-Add your OpenAI API key in a `.env` file:
+Create a `.env` file with your API key:
 
-```bash
-OPENAI_API_KEY=your_api_key_here
+```env
+OPENAI_API_KEY=your_openai_api_key
 ```
 
 ## Usage
@@ -31,36 +31,36 @@ OPENAI_API_KEY=your_api_key_here
 python app.py path/to/your_file.json
 ```
 
-You’ll receive a summary and be asked if you want to continue with a specific question.
+You will get a summary and can optionally ask further questions.
 
-## Example Output
+## Sample Output
 
 ```
 --- AI Summary ---
-This dataset contains 500 user session logs. Most sessions lasted under 2 minutes.
-40% of users bounced on the homepage.
+The dataset contains customer support tickets. Most relate to login issues.
+Ticket volume peaked in March.
 
 Ask a follow-up question? (y/n): y
-Your question: What’s the bounce rate by device?
+Your question: What login errors were most frequent?
 
 --- AI Answer ---
-Mobile users had a 52% bounce rate, while desktop was at 33%.
+The majority of login issues were due to incorrect passwords and expired sessions.
 ```
 
-## Project Structure
+## Project Layout
 
 ```
-├── app.py              # Main CLI tool
-├── .env                # Local OpenAI key
+├── app.py              # CLI script for JSON analysis
+├── .env                # Local environment file (excluded from repo)
 ├── requirements.txt    # Python dependencies
-├── .gitignore          # Ignores .env and temp files
+├── .gitignore          # Files to ignore
 ```
 
 ---
 
 ## Tags
 
-openai, json, analytics, cli, gpt, automation, devtools, data-assistant
+json, gpt, openai, analytics, ai-assistant, cli, devtools, automation
 
 
 
