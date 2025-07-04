@@ -1,66 +1,66 @@
-# AI Data Analyst – CLI Application
+# AI Data Science CLI Tool
 
-This command-line tool allows users to upload a JSON file and receive an AI-generated summary and insights, powered by OpenAI's GPT model.
+A command-line tool designed for data scientists to upload JSON files and get AI-powered summaries and insights using OpenAI's GPT models.
 
 ## Features
 
-- Upload structured JSON files
-- Receive summaries and insights in natural language
-- Ask follow-up questions via the CLI
-- Lightweight and fast, no web UI required
+- Accepts JSON files as input
+- Provides AI-generated summaries and interactive Q&A
+- Lightweight and fast CLI application
+- Secure environment variable handling for API keys
 
 ## Installation
 
 ```bash
-git clone https://github.com/mkarasds/data-analyst-ai.git
-cd data-analyst-ai
+git clone https://github.com/utrackimateusz/ai-data-science.git
+cd ai-data-science
 pip install -r requirements.txt
 ```
 
 ## Configuration
 
-Create a `.env` file with your OpenAI API key:
+Create a `.env` file and add your OpenAI API key:
 
 ```env
-OPENAI_API_KEY=your_openai_key_here
+OPENAI_API_KEY=your_openai_api_key
 ```
-
-Make sure `.env` is listed in `.gitignore`.
 
 ## Usage
 
 ```bash
-python app.py data/sample.json
+python app.py path/to/your.json
 ```
 
-### Example Output
+Receive a summary and optionally ask follow-up questions about the data.
+
+## Example Output
 
 ```
 --- AI Summary ---
-The uploaded JSON includes regional sales figures for Q2. Germany and Poland show strong growth, while the UK is declining slightly.
+The JSON contains experimental results with multiple test runs. Most runs show consistent data, except run 5 which deviates.
 
-Would you like to ask a follow-up question? (y/n): y
-Your question: What are the biggest risk indicators?
+Ask a follow-up question? (y/n): y
+Your question: What caused the deviation in run 5?
 
 --- AI Answer ---
-The decline in the UK region and volatility in France suggest areas for attention in upcoming quarters.
+The deviation appears related to sensor calibration errors during that run.
 ```
 
 ## Project Structure
 
 ```
-.
 ├── app.py
 ├── requirements.txt
 ├── .gitignore
-├── .env (not included in repo)
+├── .env (excluded)
 ```
 
 ---
 
 ## Tags
 
-openai, json, cli-tool, ai-analytics, data-analyst, gpt, automation, insights, business-intelligence
+openai, json, data-science, cli, gpt, ai-assistant, automation, research
+
 
 
 **Industry Focus**
