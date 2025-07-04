@@ -1,65 +1,67 @@
-# AI Data Integration – JSON CLI Assistant
+# AI Data Analyst – Mining Sector CLI Tool
 
-A command-line utility that integrates artificial intelligence into your data analysis workflow. Upload JSON files and get smart summaries and insights using OpenAI’s GPT models. Ideal for data integration and automation use cases.
+A lightweight command-line application that leverages OpenAI's GPT models to analyze and summarize data from uploaded JSON files. Tailored for mining and heavy industry data operations.
 
 ## Features
 
-- Upload JSON file via CLI
-- Generate descriptive summaries instantly
-- Ask follow-up questions about your data
-- Lightweight and environment-isolated
+- Upload a JSON file with operational data
+- Get descriptive AI-generated summaries
+- Ask custom questions about the data
+- All interactions happen locally via CLI
 
 ## Installation
 
 ```bash
-git clone https://github.com/dss-mak-her/ai-data-integration.git
-cd ai-data-integration
+git clone https://github.com/akonieczny-dss/ai-data-analyst-mining.git
+cd ai-data-analyst-mining
 pip install -r requirements.txt
 ```
 
 ## Configuration
 
-Prepare your `.env` file with OpenAI credentials:
+Before use, set your OpenAI API key in a `.env` file:
 
 ```env
-OPENAI_API_KEY=your_api_key_here
+OPENAI_API_KEY=your_openai_api_key
 ```
+
+Make sure `.env` is listed in `.gitignore` to keep your key safe.
 
 ## Usage
 
 ```bash
-python app.py path/to/your_file.json
+python app.py path/to/your_data.json
 ```
 
-You’ll receive an AI summary and can ask additional questions interactively.
+The program will provide an AI summary and optionally allow you to ask follow-up questions.
 
-## Example Output
+## Sample Interaction
 
 ```
 --- AI Summary ---
-The JSON contains CRM data from multiple systems. Redundant customer IDs were detected.
+This JSON contains sensor readings from multiple drill rigs. The system indicates anomalies in temperature data from Drill_Unit_3.
 
-Ask a follow-up question? (y/n): y
-Your question: Which system has the most duplicates?
+Would you like to ask a follow-up question? (y/n): y
+Your question: Are there any performance trends in Drill_Unit_2?
 
 --- AI Answer ---
-System B has 45 duplicate customer IDs, the highest among all systems.
+Yes, performance of Drill_Unit_2 has shown gradual decline over the last 5 days in RPM and fuel efficiency metrics.
 ```
 
 ## File Structure
 
 ```
-├── app.py              # CLI interface
-├── .env                # OpenAI credentials (local only)
-├── requirements.txt    # Python packages
-├── .gitignore          # Ignore .env and cache
+├── app.py
+├── .env (excluded)
+├── .gitignore
+├── requirements.txt
 ```
 
 ---
 
 ## Tags
 
-openai, json, data-integration, analytics, gpt, cli, ai-assistant, automation
+openai, json, data-mining, analytics, gpt, cli, ai-assistant, industrial-ai, mining
 
 
 **Industry Focus**
