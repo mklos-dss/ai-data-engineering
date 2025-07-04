@@ -1,67 +1,66 @@
-# AI Data Analyst – Mining Sector CLI Tool
+# AI Data Analyst – CLI Application
 
-A lightweight command-line application that leverages OpenAI's GPT models to analyze and summarize data from uploaded JSON files. Tailored for mining and heavy industry data operations.
+This command-line tool allows users to upload a JSON file and receive an AI-generated summary and insights, powered by OpenAI's GPT model.
 
 ## Features
 
-- Upload a JSON file with operational data
-- Get descriptive AI-generated summaries
-- Ask custom questions about the data
-- All interactions happen locally via CLI
+- Upload structured JSON files
+- Receive summaries and insights in natural language
+- Ask follow-up questions via the CLI
+- Lightweight and fast, no web UI required
 
 ## Installation
 
 ```bash
-git clone https://github.com/akonieczny-dss/ai-data-analyst-mining.git
-cd ai-data-analyst-mining
+git clone https://github.com/mkarasds/data-analyst-ai.git
+cd data-analyst-ai
 pip install -r requirements.txt
 ```
 
 ## Configuration
 
-Before use, set your OpenAI API key in a `.env` file:
+Create a `.env` file with your OpenAI API key:
 
 ```env
-OPENAI_API_KEY=your_openai_api_key
+OPENAI_API_KEY=your_openai_key_here
 ```
 
-Make sure `.env` is listed in `.gitignore` to keep your key safe.
+Make sure `.env` is listed in `.gitignore`.
 
 ## Usage
 
 ```bash
-python app.py path/to/your_data.json
+python app.py data/sample.json
 ```
 
-The program will provide an AI summary and optionally allow you to ask follow-up questions.
-
-## Sample Interaction
+### Example Output
 
 ```
 --- AI Summary ---
-This JSON contains sensor readings from multiple drill rigs. The system indicates anomalies in temperature data from Drill_Unit_3.
+The uploaded JSON includes regional sales figures for Q2. Germany and Poland show strong growth, while the UK is declining slightly.
 
 Would you like to ask a follow-up question? (y/n): y
-Your question: Are there any performance trends in Drill_Unit_2?
+Your question: What are the biggest risk indicators?
 
 --- AI Answer ---
-Yes, performance of Drill_Unit_2 has shown gradual decline over the last 5 days in RPM and fuel efficiency metrics.
+The decline in the UK region and volatility in France suggest areas for attention in upcoming quarters.
 ```
 
-## File Structure
+## Project Structure
 
 ```
+.
 ├── app.py
-├── .env (excluded)
-├── .gitignore
 ├── requirements.txt
+├── .gitignore
+├── .env (not included in repo)
 ```
 
 ---
 
 ## Tags
 
-openai, json, data-mining, analytics, gpt, cli, ai-assistant, industrial-ai, mining
+openai, json, cli-tool, ai-analytics, data-analyst, gpt, automation, insights, business-intelligence
 
 
 **Industry Focus**
