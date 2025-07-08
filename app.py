@@ -4,39 +4,40 @@ import sys
 from openai import OpenAI
 from dotenv import load_dotenv
 
+# Load .env
 load_dotenv()
 api_key = os.getenv("OPENAI_API_KEY")
 
 if not api_key:
-    print("ERROR: OPENAI_API_KEY is missing from your .env file.")
+    print("ERROR: OPENAI_API_KEY not set in .env")
     sys.exit(1)
 
 client = OpenAI(api_key=api_key)
 
-def load_json(path):
+def load_json_file(path):
     try:
-        with open(path, "r", encoding="utf-8") as f:
-            return json.load(f)
+        with open(path, "r", encoding="utf-8") as file:
+            return json.load(file)
     except Exception as e:
-        print(f"Failed to load JSON: {e}")
+        print(f"Error loading file: {e}")
         sys.exit(1)
 
-def query_gpt(data_string, question=None):
-    prompt = f"The following is a JSON file:\n\n{data_string}"
+def call_gpt(data_text, question=None):
+    prompt = f"Here is a JSON file:\n\n{data_text}"
     if question:
-        prompt += f"\n\nAnswer the following question about it:\n{question}"
+        prompt += f"\n\nAnswer this question: {question}"
 
     try:
         response = client.chat.completions.create(
             model="gpt-3.5-turbo",
             messages=[
-                {"role": "system", "content": "You are an expert data analyst."},
+                {"role": "system", "content": "You are a professional data analyst."},
                 {"role": "user", "content": prompt}
             ]
         )
         return response.choices[0].message.content
     except Exception as e:
-        print(f"OpenAI API error: {e}")
+        print(f"API Error: {e}")
         sys.exit(1)
 
 def main():
@@ -44,17 +45,17 @@ def main():
         print("Usage: python app.py path/to/file.json")
         sys.exit(1)
 
-    path = sys.argv[1]
-    data = load_json(path)
+    json_path = sys.argv[1]
+    data = load_json_file(json_path)
     snippet = json.dumps(data, indent=2)[:3500]
 
     print("\n--- AI Summary ---")
-    print(query_gpt(snippet))
+    print(call_gpt(snippet))
 
-    if input("\nWould you like to ask a follow-up question? (y/n): ").strip().lower() == "y":
-        question = input("Your question: ")
+    if input("\nAsk a follow-up question? (y/n): ").lower().strip() == "y":
+        q = input("Your question: ")
         print("\n--- AI Answer ---")
-        print(query_gpt(snippet, question))
+        print(call_gpt(snippet, q))
 
 if __name__ == "__main__":
     main()
