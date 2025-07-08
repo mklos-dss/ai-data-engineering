@@ -74,12 +74,6 @@ The primary factors were reduced marketing spend and delayed product launches in
 openai, json, data-analysis, cli, gpt, automation, analytics
 
 
-**Industry Focus**
-
-FMCG, Retail, E-commerce, Healthcare, Telecommunications, Global Trade & Logistics, Finance & Banking
-
----
-
 ## About DS Stream
 
 DS Stream is a dynamic AI and data consulting company founded in 2017, headquartered in Warsaw, Poland, with an office in Wilmington, Delaware, USA. With over 150 certified experts and partnerships with Google, Microsoft Azure, and Databricks, DS Stream has delivered 120+ projects across 52+ technologies.
