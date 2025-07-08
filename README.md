@@ -1,55 +1,55 @@
-# AI Data Analyst – CLI Tool
+# AI Data Engine – JSON Analysis CLI
 
-A command-line tool designed for processing and analyzing JSON data files using OpenAI's GPT models. This application enables structured insights extraction and interactive follow-up queries directly from the terminal.
+A professional command-line application for analyzing JSON files using OpenAI's GPT models. Designed to support data teams in transforming raw structured data into insights with minimal setup.
 
 ## Overview
 
-This tool enables users to:
-- Upload and parse structured JSON files
-- Automatically summarize contents with GPT-3.5
-- Ask detailed follow-up questions about the data
-- Manage OpenAI credentials via `.env` file
+This tool provides:
+- Structured summaries of any valid JSON file
+- Option to interactively ask GPT about the data
+- Seamless integration with OpenAI API via environment configuration
 
 ## Installation
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/arturroszko/ai-data-analyst.git
-cd ai-data-analyst
+git clone https://github.com/miazgamm/ai-data-engine.git
+cd ai-data-engine
 ```
 
-2. Install dependencies:
+2. Install required Python packages:
 ```bash
 pip install -r requirements.txt
 ```
 
-3. Set up environment variables:
-Create a `.env` file in the root directory:
+3. Configure your OpenAI API key:
+Create a file named `.env` in the project root and add your key:
 ```env
 OPENAI_API_KEY=your_openai_key
 ```
 
-Ensure `.env` is excluded from the repository using `.gitignore`.
+Ensure `.env` is listed in `.gitignore`.
 
 ## Usage
 
+To process a JSON file:
 ```bash
-python app.py path/to/file.json
+python app.py path/to/your_file.json
 ```
 
-After the summary, the CLI allows you to ask follow-up questions about the content.
+The application will return a GPT-based summary. You may then optionally ask a follow-up question.
 
 ## Example
 
 ```
 --- AI Summary ---
-The JSON contains invoice records for Q1 2024. The highest revenue was recorded in March, driven by SaaS product sales.
+The JSON file contains transaction logs for Q4 2023. The largest volume of payments occurred in December, primarily via digital wallets.
 
 Would you like to ask a follow-up question? (y/n): y
-Your question: What customer segment contributed most?
+Your question: Which customer segment spent the most?
 
 --- AI Answer ---
-The SMB segment accounted for 58% of total Q1 revenue, with notable growth in subscription renewals.
+The enterprise segment had the highest average transaction volume, mainly due to large annual subscriptions.
 ```
 
 ## Project Structure
@@ -63,16 +63,17 @@ The SMB segment accounted for 58% of total Q1 revenue, with notable growth in su
 ├── README.md
 ```
 
-## Technologies Used
+## Technologies
 
 - Python
 - OpenAI API
-- python-dotenv
-- CLI interface
+- dotenv
+- Terminal-based CLI
 
 ## Tags
 
-openai, gpt, data-analysis, json, automation, analytics, insights
+openai, data-engineering, json, analysis, gpt, cli, automation
+
 
 ## About DS Stream
 
