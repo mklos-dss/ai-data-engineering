@@ -1,21 +1,20 @@
-# AI JSON Tool – Terminal-Based Insight Generator
+# AI Data Engineering – JSON Analysis Assistant
 
-A terminal-based tool for summarizing and querying structured JSON data using OpenAI's language models. Built to assist analysts and developers in quickly extracting meaning from raw datasets.
+A robust command-line application built to support data engineers in analyzing structured JSON data using OpenAI GPT. It allows automated summaries and insights generation from machine-readable files in a single step.
 
-## Project Overview
+## Features
 
-Key capabilities:
-- Accepts any valid JSON file as input
-- Produces GPT-generated summaries
-- Enables follow-up Q&A sessions within the CLI
-- API access is securely managed via .env file
+- Parse and summarize any JSON document
+- Receive GPT-generated analytical commentary
+- Ask custom follow-up questions
+- Designed for terminal usage with OpenAI API
 
 ## Installation
 
-1. Clone this repository:
+1. Clone the repository:
 ```bash
-git clone https://github.com/michal-sz-dss/ai_json_tool.git
-cd ai_json_tool
+git clone https://github.com/mklos-dss/ai-data-engineering.git
+cd ai-data-engineering
 ```
 
 2. Install Python dependencies:
@@ -23,34 +22,34 @@ cd ai_json_tool
 pip install -r requirements.txt
 ```
 
-3. Set up your OpenAI API key:
-Create a `.env` file in the root directory with the following content:
+3. Set your OpenAI API Key:
+Create a `.env` file in the project root:
 ```env
-OPENAI_API_KEY=your_openai_api_key
+OPENAI_API_KEY=your_api_key_here
 ```
 
-The `.env` file should be excluded from version control.
+Make sure to add `.env` to `.gitignore`.
 
 ## Usage
 
-To analyze a JSON file:
+Run the app by providing a path to a `.json` file:
 ```bash
-python app.py path/to/file.json
+python app.py path/to/your_file.json
 ```
 
-You will receive a structured summary. You may also ask a follow-up question during the session.
+After the summary, the app will prompt whether you’d like to ask a question.
 
 ## Example
 
 ```
 --- AI Summary ---
-The JSON file contains sales records across three quarters. A spike in revenue occurred in Q2, driven by increased demand in the EU region.
+This file contains customer orders and shipment statuses for Q2. There is a high delivery failure rate in Region B.
 
 Would you like to ask a follow-up question? (y/n): y
-Your question: What was the best-selling category?
+Your question: What caused the delays?
 
 --- AI Answer ---
-The electronics category led sales, contributing 42% of Q2 revenue.
+Most delays were due to logistics partner switchovers and weather issues in the region.
 ```
 
 ## Project Structure
@@ -64,16 +63,16 @@ The electronics category led sales, contributing 42% of Q2 revenue.
 ├── README.md
 ```
 
-## Technologies
+## Technologies Used
 
 - Python 3.x
-- OpenAI API
-- dotenv
-- CLI application design
+- OpenAI API (gpt-3.5-turbo)
+- dotenv for environment management
 
-## Tags
+## Keywords
 
-openai, json, data-analysis, python, gpt, cli, automation
+openai, json, gpt, data-engineering, ai, command-line, analytics
+
 
 
 ## About DS Stream

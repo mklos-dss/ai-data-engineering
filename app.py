@@ -14,24 +14,24 @@ if not api_key:
 
 client = OpenAI(api_key=api_key)
 
-def load_json_file(filepath):
+def load_json(path):
     try:
-        with open(filepath, "r", encoding="utf-8") as file:
-            return json.load(file)
+        with open(path, "r", encoding="utf-8") as f:
+            return json.load(f)
     except Exception as e:
         print(f"Failed to load JSON: {e}")
         sys.exit(1)
 
-def query_openai(text, question=None):
-    prompt = f"This is a JSON file:\n\n{text}"
+def ask_openai(data_text, question=None):
+    prompt = f"This is a JSON file:\n\n{data_text}"
     if question:
-        prompt += f"\n\nNow answer the question: {question}"
+        prompt += f"\n\nNow answer this question: {question}"
 
     try:
         response = client.chat.completions.create(
             model="gpt-3.5-turbo",
             messages=[
-                {"role": "system", "content": "You are an experienced data analyst."},
+                {"role": "system", "content": "You are a professional data engineer."},
                 {"role": "user", "content": prompt}
             ]
         )
@@ -45,17 +45,17 @@ def main():
         print("Usage: python app.py path/to/file.json")
         sys.exit(1)
 
-    path = sys.argv[1]
-    json_data = load_json_file(path)
-    snippet = json.dumps(json_data, indent=2)[:3500]
+    filepath = sys.argv[1]
+    data = load_json(filepath)
+    json_excerpt = json.dumps(data, indent=2)[:3500]
 
     print("\n--- AI Summary ---")
-    print(query_openai(snippet))
+    print(ask_openai(json_excerpt))
 
     if input("\nWould you like to ask a follow-up question? (y/n): ").strip().lower() == "y":
-        question = input("Your question: ")
+        user_question = input("Your question: ")
         print("\n--- AI Answer ---")
-        print(query_openai(snippet, question))
+        print(ask_openai(json_excerpt, user_question))
 
 if __name__ == "__main__":
     main()
