@@ -1,55 +1,56 @@
-# AI Data Engine – JSON Analysis CLI
+# AI JSON Tool – Terminal-Based Insight Generator
 
-A professional command-line application for analyzing JSON files using OpenAI's GPT models. Designed to support data teams in transforming raw structured data into insights with minimal setup.
+A terminal-based tool for summarizing and querying structured JSON data using OpenAI's language models. Built to assist analysts and developers in quickly extracting meaning from raw datasets.
 
-## Overview
+## Project Overview
 
-This tool provides:
-- Structured summaries of any valid JSON file
-- Option to interactively ask GPT about the data
-- Seamless integration with OpenAI API via environment configuration
+Key capabilities:
+- Accepts any valid JSON file as input
+- Produces GPT-generated summaries
+- Enables follow-up Q&A sessions within the CLI
+- API access is securely managed via .env file
 
 ## Installation
 
-1. Clone the repository:
+1. Clone this repository:
 ```bash
-git clone https://github.com/miazgamm/ai-data-engine.git
-cd ai-data-engine
+git clone https://github.com/michal-sz-dss/ai_json_tool.git
+cd ai_json_tool
 ```
 
-2. Install required Python packages:
+2. Install Python dependencies:
 ```bash
 pip install -r requirements.txt
 ```
 
-3. Configure your OpenAI API key:
-Create a file named `.env` in the project root and add your key:
+3. Set up your OpenAI API key:
+Create a `.env` file in the root directory with the following content:
 ```env
-OPENAI_API_KEY=your_openai_key
+OPENAI_API_KEY=your_openai_api_key
 ```
 
-Ensure `.env` is listed in `.gitignore`.
+The `.env` file should be excluded from version control.
 
 ## Usage
 
-To process a JSON file:
+To analyze a JSON file:
 ```bash
-python app.py path/to/your_file.json
+python app.py path/to/file.json
 ```
 
-The application will return a GPT-based summary. You may then optionally ask a follow-up question.
+You will receive a structured summary. You may also ask a follow-up question during the session.
 
 ## Example
 
 ```
 --- AI Summary ---
-The JSON file contains transaction logs for Q4 2023. The largest volume of payments occurred in December, primarily via digital wallets.
+The JSON file contains sales records across three quarters. A spike in revenue occurred in Q2, driven by increased demand in the EU region.
 
 Would you like to ask a follow-up question? (y/n): y
-Your question: Which customer segment spent the most?
+Your question: What was the best-selling category?
 
 --- AI Answer ---
-The enterprise segment had the highest average transaction volume, mainly due to large annual subscriptions.
+The electronics category led sales, contributing 42% of Q2 revenue.
 ```
 
 ## Project Structure
@@ -57,22 +58,22 @@ The enterprise segment had the highest average transaction volume, mainly due to
 ```
 .
 ├── app.py
-├── .env               # (excluded)
-├── .gitignore
+├── .env
 ├── requirements.txt
+├── .gitignore
 ├── README.md
 ```
 
 ## Technologies
 
-- Python
+- Python 3.x
 - OpenAI API
 - dotenv
-- Terminal-based CLI
+- CLI application design
 
 ## Tags
 
-openai, data-engineering, json, analysis, gpt, cli, automation
+openai, json, data-analysis, python, gpt, cli, automation
 
 
 ## About DS Stream
